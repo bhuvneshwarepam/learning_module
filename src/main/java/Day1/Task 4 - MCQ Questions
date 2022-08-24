@@ -1,0 +1,395 @@
+1) Suppose we have a class named Rabbit. Which of the following statements are true?
+	(Choose all that apply)
+
+	1: public class Rabbit {
+	2: public static void main(String[] args) {
+	3: Rabbit one = new Rabbit();
+	4: Rabbit two = new Rabbit();
+	5: Rabbit three = one;
+	6: one = null;
+	7: Rabbit four = one;
+	8: three = null;
+	9: two = null;
+	10: two = new Rabbit();
+	11: System.gc();
+	12: } }
+
+    A. The Rabbit object from line 3 is first eligible for garbage collection immediately
+    following line 6.
+    B. The Rabbit object from line 3 is first eligible for garbage collection immediately
+    following line 8.
+    C. The Rabbit object from line 3 is first eligible for garbage collection immediately
+    following line 12.
+    D. The Rabbit object from line 4 is first eligible for garbage collection immediately
+    following line 9.
+    E. The Rabbit object from line 4 is first eligible for garbage collection immediately
+    following line 11.
+    F. The Rabbit object from line 4 is first eligible for garbage collection immediately
+    following line 12.
+
+
+    Answer : B, D
+
+----------------------------------------------------------------------------------------------------
+
+2) What is true about the following code? (Choose all that apply)
+
+	public class Bear {
+	    protected void finalize() {
+            System.out.println("Roar!");
+        }
+
+	    public static void main(String[] args)
+	        Bear bear = new Bear();
+            bear = null;
+            System.gc();
+        }
+    }
+
+    A. finalize() is guaranteed to be called.
+    B. finalize() might or might not be called
+    C. finalize() is guaranteed not to be called.
+    D. Garbage collection is guaranteed to run.
+    E. Garbage collection might or might not run.
+    F. Garbage collection is guaranteed not to run.
+    G. The code does not compile
+
+
+    Answer : A, D
+
+----------------------------------------------------------------------------------------------------
+
+3) Which are true of the following code? (Choose all that apply)
+
+    1: import java.util.*;
+    2: public class Grasshopper {
+    3: public Grasshopper(String n) {
+    4: name = n;
+    5: }
+    6: public static void main(String[] args) {
+    7: Grasshopper one = new Grasshopper("g1");
+    8: Grasshopper two = new Grasshopper("g2");
+    9: one = two;
+    10: two = null;
+    11: one = null;
+    12: }
+    13: private String name; }
+
+    A. Immediately after line 9, no grasshopper objects are eligible for garbage collection.
+    B. Immediately after line 10, no grasshopper objects are eligible for garbage collection.
+    C. Immediately after line 9, only one grasshopper object is eligible for garbage collection.
+    D. Immediately after line 10, only one grasshopper object is eligible for garbage collection.
+    E. Immediately after line 11, only one grasshopper object is eligible for garbage collection.
+    F. The code compiles.
+    G. The code does not compile.
+
+
+    Answer : C, E, F
+
+---------------------------------------------------------------------------------------------------
+
+4) What allows the programmer to destroy an object x?
+
+	A. x.finalize()
+	B. x.delete()
+	C. Runtime.getRuntime().gc()
+	D. Only the garbage collection system can destroy an object.
+
+
+	Answer : D
+
+---------------------------------------------------------------------------------------------------
+
+5) Which statement is true?
+
+	A. Programs will not run out of memory.
+	B. Objects that are referred to by other objects will never be garbage collected.
+	C. Objects that will never again be used are eligible for garbage collection.
+	D. Objects that can be reached from a live thread will never be garbage collected.
+
+
+	Answer : D
+
+---------------------------------------------------------------------------------------------------
+
+6) Where is a new object allocated memory?
+
+	A. Young space
+	B. JVM
+	C. Young or Old space depending on space availability
+	D. Old space
+
+
+	Answer : A
+
+---------------------------------------------------------------------------------------------------
+
+7) Which of the following is a garbage collection technique?
+
+	A. Sweep model
+	B. Mark and sweep model
+	C. Space management model
+	D. Cleanup model
+
+
+	Answer : B
+
+---------------------------------------------------------------------------------------------------
+
+8) When is the B object, created in line 3, eligible for garbage collection?
+
+    class Test {
+        Test s;
+        void start() {
+            A a = new A();
+            B b = new B(); /* Line 3 */
+            a.s = b;
+            b.s = a;
+            b = null; /* Line 5 */
+            a = null; /* Line 6 */
+            System.out.println(""start completed""); /* Line 7 */
+        }
+    }
+
+	A. after line 5
+	B. after line 6
+	C. after line 7
+	D. There is no way to be absolutely certain.
+
+	Answer : B
+
+---------------------------------------------------------------------------------------------------
+
+9) How many objects are eligible for garbage collection after execution of line ?
+
+     public class Test
+    {
+        public static void main(String[] args)
+        {
+            m1(); // Line
+        }
+        static void m1()
+        {
+            Test t1 = new Test();
+            Test t2 = new Test();
+        }
+    }
+
+	A. 0
+	B. 1
+	C. 2
+	D. 3
+
+
+	Answer : C
+
+---------------------------------------------------------------------------------------------------
+
+10) After line 11 runs, how many objects are eligible for garbage collection?
+
+    class X2
+    {
+        public X2 x;
+        public static void main(String [] args)
+        {
+            X2 x2 = new X2(); /* Line 6 */
+            X2 x3 = new X2(); /* Line 7 */
+            x2.x = x3;
+            x3.x = x2;
+            x2 = new X2();
+            x3 = x2; /* Line 11 */
+            doComplexStuff();
+        }
+    }
+
+
+    Answer : 2
+
+---------------------------------------------------------------------------------------------------
+
+11) How many objects are eligible for garbage collection after execution of line 8?
+
+    public class Test
+    {
+        public static void main(String [] args)
+        {
+            Test t1 = new Test();
+            Test t2 = m1(t1); // line 6
+            Test t3 = new Test();
+            t2 = t3; // line 8
+        }
+        static Test m1(Test temp)
+        {
+            temp = new Test();
+            return temp;
+        }
+    }
+
+
+    Answer : 1
+
+---------------------------------------------------------------------------------------------------
+
+12) When is the Float object, created in line 3, eligible for garbage collection?
+
+    public Object m()
+    {
+        Object o = new Float(3.14F);
+        Object [] oa = new Object[l];
+        oa[0] = o; /* Line 5 */
+        o = null; /* Line 6 */
+        oa[0] = null; /* Line 7 */
+        return o; /* Line 8 */
+    }
+
+    A. just after line 5
+    B. just after line 6
+    C. just after line 7
+    D. just after line 8
+
+
+    Answer : C
+
+---------------------------------------------------------------------------------------------------
+
+13. Which component is responsible for optimizing byte-codes?
+
+	A. JVM
+	B. JDK
+	C. JIT
+	D. JRE
+
+	Answer : C
+
+---------------------------------------------------------------------------------------------------
+
+14) What is the order of execution while an object is instantiated?
+
+    A. static block, instance block and then constructor is called.
+    B.  Constructor, instance block and then static block is called
+    C. instance block, constructor and  then static block is called.
+    D. instance block,  static block and then cnstructor is called
+
+    Answer : A
+
+---------------------------------------------------------------------------------------------------
+
+15) What statement(s) are true about the Grabage Collection? (Choose all theat apply)
+
+    a) System.gc() is not guaranteed to run the garbage collector and Java is free to ignore the request.
+    b) Unreachable objects are not eligibile for garbage colletion.
+    c) if a references to the object have gone out of scope, then the object is eligible for Grabage collection.
+    D) All of the above.
+
+    Answer : C
+
+---------------------------------------------------------------------------------------------------
+
+16) In java 8,  What is the successor of PermGen ( or Replaced with Permgen )?
+
+	A. HeapSpace.
+	B. MetaSpace.
+	C. Stack Space
+	D. No changes.
+
+	Answer : B
+
+---------------------------------------------------------------------------------------------------
+
+17)  What is the output of the below code?
+
+    public class Exception1 {
+        public static void main(String[] args) {
+            try {
+                int i=9/0;
+                System.out.println(i);
+                return;
+            } catch (Exception e) {
+                System.out.println("exception caught");
+                return;
+            }
+            System.out.println("task completed");
+        }
+    }
+
+	A)exception caught
+	  task completed
+	B)compile time error
+	C)exception caught
+	D)9
+	  exception caught
+	  task completed
+
+	Answer : C
+
+---------------------------------------------------------------------------------------------------
+
+18) public class StringClasses {
+        public static void main(String[] args) {
+            String s1 = new String("java");
+            String s2 = new String("java");
+            System.out.println(s1.equals(s2));
+            StringBuilder builder1 = new StringBuilder ("java");
+            StringBuilder builder2 = new StringBuilder ("java");
+            System.out.println(builder1.equals(builder2));
+            StringBuffer buffer1= new StringBuffer ("java");
+            StringBuffer buffer2 = new StringBuffer ("java");
+            System.out.println(buffer1.equals(buffer2));
+        }
+    }
+
+	A)  false
+        true
+        false
+	B)  true
+        false
+        true
+    C)  true
+        false
+        false
+    D)  true
+        true
+        true
+	E)  false
+        false
+        false
+
+    Answer : C
+
+---------------------------------------------------------------------------------------------------
+
+19)
+	public class Test {
+	    public void print(Integer i) {
+	        System.out.println("Integer");
+	    }
+	    public void print(int i) {
+	        System.out.println("int");
+	    }
+	    public void print(long i) {
+	        System.out.println("long");
+	    }
+	    public static void main(String args[]) {
+	        Test test = new Test();
+	        test.print(10);
+	    }
+	}
+
+	A)int
+	B)long
+	C)runtme exception
+	D)Integer
+
+	Answer : A
+
+---------------------------------------------------------------------------------------------------
+
+20) Which of the following statements are true? (Choose all that apply)
+	A. Checked exceptions are intended to be thrown by the JVM (and not the programmer).
+	B. Checked exceptions are required to be caught or declared.
+	C. Errors are intended to be thrown by the JVM (and not the programmer).
+	D. Errors are required to be caught or declared.
+	E. Runtime exceptions are intended to be thrown by the JVM (and not the programmer).
+	F. Runtime exceptions are required to be caught or declared
+
+	Answer : A, B, C
