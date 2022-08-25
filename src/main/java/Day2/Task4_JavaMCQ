@@ -291,4 +291,129 @@ compile successfully? (Choose all that apply)
 	D. The code will not compile because of line 7.
 	E. It compiles but throws an exception at runtime.
 
-	Answer : 
+	Answer : D because getNumberOfSections method is not overriden
+
+------------------------------------------------------------------------------------------------------
+
+15. Which of the following statements about polymorphism are true? (Choose all that apply)
+
+    A. A reference to an object may be cast to a subclass of the object without an explicit cast.
+    B. If a method takes a superclass of three objects, then any of those classes may be passed
+    as a parameter to the method.
+    C. A method that takes a parameter with type java.lang.Object will take any reference.
+    D. All cast exceptions can be detected at compile-time.
+    E. By defining a public instance method in the superclass, you guarantee that the specific
+    method will be called in the parent class at runtime.
+
+    Answer : B, C
+
+------------------------------------------------------------------------------------------------------
+
+16. Choose the correct statement about the following code:
+	1: public interface CanFly {
+	2: void fly();
+	3: }
+	4: interface HasWings {
+	5: public abstract Object getWindSpan();
+	6: }
+	7: abstract class Falcon implements CanFly, HasWings {
+	8: }
+
+	A. It compiles without issue.
+	B. The code will not compile because of line 2.
+	C. The code will not compile because of line 4.
+	D. The code will not compile because of line 5.
+	E. The code will not compile because of lines 2 and 5.
+	F. The code will not compile because the class Falcon doesn’t implement the interface
+	methods.
+
+	Answer : A
+
+------------------------------------------------------------------------------------------------------
+
+17. Which statements are true about the following code? (Choose all that apply)
+
+	1: interface HasVocalCords {
+	2: public abstract void makeSound();
+	3: }
+	4: public interface CanBark extends HasVocalCords {
+	5: public void bark();
+	6: }
+
+	A. The CanBark interface doesn’t compile.
+	B. A class that implements HasVocalCords must override the makeSound() method.
+	C. A class that implements CanBark inherits both the makeSound() and bark() methods.
+	D. A class that implements CanBark only inherits the bark() method.
+	E. An interface cannot extend another interface
+
+	Answer : B, C
+
+------------------------------------------------------------------------------------------------------
+
+18.
+	1: abstract class Reptile {
+	2: public final void layEggs() { System.out.println("Reptile laying eggs");
+	 }
+	3: public static void main(String[] args) {
+	4: Reptile reptile = new Lizard();
+	5: reptile.layEggs();
+	6: }
+	7: }
+	8: public class Lizard extends Reptile {
+	9: public void layEggs() { System.out.println("Lizard laying eggs"); }
+	10: }
+
+	A. Reptile laying eggs
+	B. Lizard laying eggs
+	C. The code will not compile because of line 4.
+	D. The code will not compile because of line 5.
+	E. The code will not compile because of line 9
+
+	Answer : E
+
+------------------------------------------------------------------------------------------------------
+
+19. what is the output of the following code? (Choose all that apply)
+
+	1: interface Aquatic {
+	2: public default int getNumberOfGills(int input) { return 2; }
+	3: }
+	4: public class ClownFish implements Aquatic {
+	5: public String getNumberOfGills() { return "4"; }
+	6: public String getNumberOfGills(int input) { return "6"; }
+	7: public static void main(String[] args) {
+	8: System.out.println(new ClownFish().getNumberOfGills(-1));
+	9: }
+	10: }
+
+	A. 2
+	B. 4
+	C. 6
+	D. The code will not compile because of line 5.
+	E. The code will not compile because of line 6.
+	F. The code will not compile because of line 8.
+
+    Answer : E
+
+------------------------------------------------------------------------------------------------------
+
+20. What is the result of the following code?
+
+	1: public abstract class Bird {
+	2: private void fly() { System.out.println("Bird is flying"); }
+	3: public static void main(String[] args) {
+	4: Bird bird = new Pelican();
+	5: bird.fly();
+	6: }
+	7: }
+	8: class Pelican extends Bird {
+	9: protected void fly() { System.out.println("Pelican is flying"); }
+	10: }
+
+	A. Bird is flying
+	B. Pelican is flying
+	C. The code will not compile because of line 4.
+	D. The code will not compile because of line 5.
+	E. The code will not compile bec
+
+	Answer : A
