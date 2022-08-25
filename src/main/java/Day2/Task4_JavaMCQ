@@ -1,0 +1,294 @@
+1. What individual changes, if any, would allow the following code to compile? (Choose all that apply)
+
+    1: public interface Animal { public default String getName() { return null; } }
+    2: interface Mammal { public default String getName() { return null; } }
+    3: abstract class Otter implements Mammal, Animal {}
+
+    A. The code compiles without issue.
+    B. Remove the default method modifier and method implementation on line 1.
+    C. Remove the default method modifier and method implementation on line 2.
+    D. Remove the default method modifier and method implementation on lines 1 and 2.
+    E. Change the return value on line 1 from null to "Animal".
+    F. Override the getName() method with an abstract method in the Otter class.
+    G. Override the getName() method with a concrete method in the Otter class.
+
+    Answer : D, G
+
+------------------------------------------------------------------------------------------------------
+
+2. Which of the following lines can be inserted at line 11 to print true? (Choose all that apply)
+
+    10: public static void main(String[] args) {
+    11: // INSERT CODE HERE
+    12: }
+    13: private static boolean test(Predicate<Integer> p) {
+    14: return p.test(5);
+    15: }
+
+    A. System.out.println(test(i -> i == 5));
+    B. System.out.println(test(i -> {i == 5;}));
+    C. System.out.println(test((i) -> i == 5));
+    D. System.out.println(test((int i) -> i == 5);
+    E. System.out.println(test((int i) -> {return i == 5;}));
+    F. System.out.println(test((i) -> {return i == 5;}));
+
+    Answer : A, C, F
+
+------------------------------------------------------------------------------------------------------
+
+3. Which of the following are checked exceptions? (Choose all that apply)
+    A. Exception
+    B. IllegalArgumentException
+    C. IOException
+    D. NullPointerException
+    E. NumberFormatException
+    F. StackOverflowError
+
+    Answer : C
+
+------------------------------------------------------------------------------------------------------
+
+4. Which of the following are true? (Choose all that apply)
+
+    A. An instance variable of type double defaults to null.
+    B. An instance variable of type int defaults to null.
+    C. An instance variable of type String defaults to null.
+    D. An instance variable of type double defaults to 0.0.
+    E. An instance variable of type int defaults to 0.0.
+    F. An instance variable of type String defaults to 0.0.
+    G. None of the above
+
+    Answer : C, D
+
+------------------------------------------------------------------------------------------------------
+
+5.  Which of the following are true statements? (Choose all that apply)
+
+    A. Java allows operator overloading.
+    B. Java code compiled on Windows can run on Linux.
+    C. Java has pointers to specific locations in memory.
+    D. Java is a procedural language.
+    E. Java is an object-oriented language.
+    F. Java is a functional programming language.
+
+    Answer : B, E, F
+
+------------------------------------------------------------------------------------------------------
+
+6.  Which of the following are output by this code? (Choose all that apply)
+
+	3: String s = "Hello";
+	4: String t = new String(s);
+	5: if ("Hello".equals(s)) System.out.println("one");
+	6: if (t == s) System.out.println("two");
+	7: if (t.equals(s)) System.out.println("three");
+	8: if ("Hello" == s) System.out.println("four");
+	9: if ("Hello" == t) System.out.println("five");
+
+	A. one
+	B. two
+	C. three
+	D. four
+	E. five
+	F. The code does not compile
+
+    Answer : A, C, D
+
+------------------------------------------------------------------------------------------------------
+
+7. What is the result of the following code?
+
+	7: StringBuilder sb = new StringBuilder();
+	8: sb.append("aaa").insert(1, "bb").insert(4, "ccc");
+	9: System.out.println(sb);
+
+	A. abbaaccc
+	B. abbaccca
+	C. bbaaaccc
+	D. bbaaccca
+	E. An exception is thrown.
+	F. The code does not compile.
+
+	Answer : B
+
+------------------------------------------------------------------------------------------------------
+
+8. What is the result of the following code?
+
+	4: int total = 0;
+	5: StringBuilder letters = new StringBuilder("abcdefg");
+	6: total += letters.substring(1, 2).length();
+	7: total += letters.substring(6, 6).length();
+	8: total += letters.substring(6, 5).length();
+	9: System.out.println(total);
+
+    A. 1
+    B. 2
+    C. 3
+    D. 7
+    E. An exception is thrown.
+    F. The code does not compile.
+
+    Answer : E
+
+------------------------------------------------------------------------------------------------------
+
+9. What is the result of the following program?
+
+	1: public class Squares {
+	2: public static long square(int x) {
+	3: long y = x * (long) x;
+	4: x = -1;
+	5: return y;
+	6: }
+	7: public static void main(String[] args) {
+	8: int value = 9;
+	9: long result = square(value);
+	10: System.out.println(value);
+	11: } }
+
+	A. -1
+	B. 9
+	C. 81
+	D. Compiler error on line 9.
+	E. Compiler error on a different line.
+
+	Answer : B
+
+------------------------------------------------------------------------------------------------------
+
+10.  Which of the following are true about the following code? (Choose all that apply)
+
+	public class Create {
+         Create() {
+            System.out.print("1 ");
+         }
+	     Create(int num) {
+            System.out.print("2 ");
+         }
+         Create(Integer num) {
+            System.out.print("3 ");
+         }
+         Create(Object num) {
+            System.out.print("4 ");
+         }
+         Create(int... nums) {
+            System.out.print("5 ");
+         }
+
+         public static void main(String[] args) {
+             new Create(100);
+             new Create(1000L);
+         }
+	}
+
+	A. The code prints out 2 4.
+	B. The code prints out 3 4.
+	C. The code prints out 4 2.
+	D. The code prints out 4 4.
+	E. The code prints 3 4 if you remove the constructor Create(int num).
+	F. The code prints 4 4 if you remove the constructor Create(int num).
+	G. The code prints 5 4 if you remove the constructor Create(int num).
+
+	Answer : A
+
+------------------------------------------------------------------------------------------------------
+
+11 . What is the output of the following code?
+
+	1: class Mammal {
+	2: public Mammal(int age) {
+	3: System.out.print("Mammal");
+	4: }
+	5: }
+	6: public class Platypus extends Mammal {
+	7: public Platypus() {
+	8: System.out.print("Platypus");
+	9: }
+	10: public static void main(String[] args) {
+	11: new Mammal(5);
+	12: }
+	13: }
+
+		A. Platypus
+		B. Mammal
+		C. PlatypusMammal
+		D. MammalPlatypus
+		E. The code will not compile because of line 8.
+		F. The code will not compile because of line 11.
+
+	Answer : Compilation issue : There is no default constructor in Mammal class
+
+------------------------------------------------------------------------------------------------------
+
+12. Which of the following statements can be inserted in the blank line so that the code will
+compile successfully? (Choose all that apply)
+
+	public interface CanHop {}
+
+	public class Frog implements CanHop {
+         public static void main(String[] args) {
+            frog = new TurtleFrog();
+         }
+	}
+
+	public class BrazilianHornedFrog extends Frog {}
+	public class TurtleFrog extends Frog {}
+
+		A. Frog
+		B. TurtleFrog
+		C. BrazilianHornedFrog
+		D. CanHop
+		E. Object
+		F. Long
+
+	Answer : A, B, D, E
+
+------------------------------------------------------------------------------------------------------
+
+13. Which statement(s) are correct about the following code? (Choose all that apply)
+
+	public class Rodent {
+         protected static Integer chew() throws Exception {
+            System.out.println("Rodent is chewing");
+            return 1;
+         }
+	}
+	public class Beaver extends Rodent {
+         public Number chew() throws RuntimeException {
+             System.out.println("Beaver is chewing on wood");
+             return 2;
+         }
+	}
+
+	A. It will compile without issue.
+	B. It fails to compile because the type of the exception the method throws is a subclass of
+	the type of exception the parent method throws.
+	C. It fails to compile because the return types are not covariant.
+	D. It fails to compile because the method is protected in the parent class and public in
+	the subclass.
+	E. It fails to compile because of a static modifier mismatch between the two methods.
+
+	Answer : C
+
+------------------------------------------------------------------------------------------------------
+
+14. Choose the correct statement about the following code:
+
+	1: interface HasExoskeleton {
+	2: abstract int getNumberOfSections();
+	3: }
+	4: abstract class Insect implements HasExoskeleton {
+	5: abstract int getNumberOfLegs();
+	6: }
+	7: public class Beetle extends Insect {
+	8: int getNumberOfLegs() { return 6; }
+	9: }
+
+	A. It compiles and runs without issue.
+	B. The code will not compile because of line 2.
+	C. The code will not compile because of line 4.
+	D. The code will not compile because of line 7.
+	E. It compiles but throws an exception at runtime.
+
+	Answer : 
